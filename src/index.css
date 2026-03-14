@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui";
+@import "tw-shimmer";
+ 
+.font-name2{
+     font-family: "Russo One", sans-serif;;
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(163, 230, 53, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 18px #a3e635;
+  }
+}
+
+.animate-glow {
+  animation: glow 2.5s ease-in-out infinite;
+}
+
+.wave {
+  display: inline-block;
+}
+
+.group:hover .wave {
+  animation: wave 1s infinite;
+}
+
+.group:hover .wave:nth-child(1) { animation-delay: 0s; }
+.group:hover .wave:nth-child(2) { animation-delay: 0.05s; }
+.group:hover .wave:nth-child(3) { animation-delay: 0.1s; }
+.group:hover .wave:nth-child(4) { animation-delay: 0.15s; }
+.group:hover .wave:nth-child(5) { animation-delay: 0.2s; }
+.group:hover .wave:nth-child(6) { animation-delay: 0.25s; }
+.group:hover .wave:nth-child(7) { animation-delay: 0.3s; }
+.group:hover .wave:nth-child(8) { animation-delay: 0.35s; }
+.group:hover .wave:nth-child(9) { animation-delay: 0.4s; }
+
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+}
+
+.animate-floatSlow {
+  animation: floatSlow 10s ease-in-out infinite;
+}
+
+    
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); 
+  }
+}
+
+ .animate-floatSlow {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+@keyframes bounce-custom {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);  
+  }
+}
+
+.bounce-custom {
+  animation: bounce-custom 3s ease-in-out infinite;
+}
+
+@keyframes smooth-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-smooth{
+  animation: smooth-spin 18s linear infinite;
+}
+
+@keyframes shake {
+ 0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: translate(-5px, -5px) rotate(-20deg); }
+  20%, 40%, 60%, 80% { transform: translate(5px, 5px) rotate(20deg); }
+}
+
+.shake {
+  animation: shake 4.8s ease-in-out infinite;
+}
