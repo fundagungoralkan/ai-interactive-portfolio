@@ -73,26 +73,25 @@ const ChatBox = () => {
     ]);
 
     try {
-      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-
-          Authorization:
-            "Bearer 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",
-          "HTTP-Referer": "https://ai-interactive-portfolio-five.vercel.app",
-          "X-Title": "Funda Portfolio",
+      const res = await fetch(
+        "https://api.groq.com/openai/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
+          },
+          body: JSON.stringify({
+            model: "llama-3.1-8b-instant",
+            messages: [
+              { role: "system", content: SYSTEM_PROMPT },
+              { role: "user", content: val },
+            ],
+            max_tokens: 500,
+            temperature: 0.7,
+          }),
         },
-        body: JSON.stringify({
-          model: "meta-llama/llama-3.1-8b-instruct:free",
-          messages: [
-            { role: "system", content: SYSTEM_PROMPT },
-            { role: "user", content: val },
-          ],
-          max_tokens: 500,
-          temperature: 0.7,
-        }),
-      });
+      );
       const data = await res.json();
       const reply =
         data.choices?.[0]?.message?.content ||
