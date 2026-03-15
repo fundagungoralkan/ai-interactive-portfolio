@@ -2,7 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "functions": {
-    "api/chat.js": {
+    "api/chat.cjs": {
       "memory": 128,
       "maxDuration": 10
     }
