@@ -79,7 +79,7 @@ const ChatBox = () => {
           "Content-Type": "application/json",
 
           Authorization:
-            "Bearer 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",
+            "Bearer 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",
           "HTTP-Referer": "https://ai-interactive-portfolio-five.vercel.app",
           "X-Title": "Funda Portfolio",
         },
