@@ -1,5 +1,28 @@
 import { useState, useRef, useEffect } from "react";
 
+const SYSTEM_PROMPT = `You are a helpful AI assistant on Funda Alkan's portfolio website. Answer questions about Funda concisely and professionally. Keep answers short and friendly.
+
+NAME: Funda Alkan
+ROLE: Frontend Developer specialising in React.js & Next.js
+LOCATION: Belfast, United Kingdom (fully authorised to work)
+AVAILABILITY: Open to Frontend Developer opportunities — full-time, part-time, freelance, remote
+
+SKILLS:
+- Frontend: React.js, Next.js, JavaScript, TypeScript, HTML, CSS
+- Backend: Java, Spring Boot, REST API, MongoDB, PostgreSQL
+- Tools: Git, VS Code, Jira, Vercel, Postman
+
+PROJECTS:
+1. Özkapan Container — Next.js, React, SCSS, EmailJS, Bootstrap
+2. Alkan Foreign Trade Website — Next.js, React, SCSS, i18next, Particle.js
+3. Kivi Akademi Education Website — Next.js, React, Java, Spring Boot, Framer Motion, Stripe
+
+CONTACT:
+- Email: fundaalkan112@gmail.com
+- Phone/WhatsApp: +44 7771 250046
+
+If asked something unrelated to Funda, politely redirect to her portfolio topics.`;
+
 const SUGGESTIONS = [
   { label: "Who is Funda?", q: "Who is Funda?" },
   { label: "Skills", q: "What are her skills?" },
@@ -50,15 +73,32 @@ const ChatBox = () => {
     ]);
 
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: val }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer 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",
+          "HTTP-Referer": "https://ai-interactive-portfolio-five.vercel.app",
+          "X-Title": "Funda Portfolio",
+        },
+        body: JSON.stringify({
+          model: "meta-llama/llama-3.1-8b-instruct:free",
+          messages: [
+            { role: "system", content: SYSTEM_PROMPT },
+            { role: "user", content: val },
+          ],
+          max_tokens: 500,
+          temperature: 0.7,
+        }),
       });
       const data = await res.json();
+      const reply =
+        data.choices?.[0]?.message?.content ||
+        "Sorry, I couldn't get a response.";
       setMessages((prev) => {
         const updated = [...prev];
-        updated[updated.length - 1] = { type: "bot", text: data.reply };
+        updated[updated.length - 1] = { type: "bot", text: reply };
         return updated;
       });
     } catch {
