@@ -1,7 +1,3 @@
-export const config = {
-  runtime: "edge",
-};
-
 const SYSTEM_PROMPT = `You are a helpful AI assistant on Funda Alkan's portfolio website. Answer questions about Funda concisely and professionally. Keep answers short and friendly.
 
 NAME: Funda Alkan
