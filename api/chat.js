@@ -25,7 +25,7 @@ CONTACT:
 
 If asked something unrelated to Funda, politely redirect to her portfolio topics.`;
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -79,4 +79,4 @@ export default async function handler(req, res) {
       .status(500)
       .json({ reply: "Something went wrong. Please try again!" });
   }
-}
+};
