@@ -93,9 +93,9 @@ const Banner = () => {
             I'm a Frontend Developer specializing in React.js & Next.js,
             passionate about building high-quality, responsive, and visually
             engaging web applications. I also bring backend foundations in Java
-            & Spring Boot — giving me the ability to collaborate across the
-            stack and understand the full picture. Always exploring, improving,
-            and building — one project at a time. Welcome to my world!
+            and Spring Boot, enabling me to collaborate across the stack and
+            understand the full picture. Always exploring, improving, and
+            building, one project at a time. Welcome to my world!
           </p>
 
           <div className="flex gap-3">
