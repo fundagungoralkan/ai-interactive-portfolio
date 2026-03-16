@@ -116,6 +116,23 @@ const ChatBox = () => {
 
   return (
     <>
+      {!open && (
+        <span
+          style={{
+            position: "fixed",
+            bottom: "24px",
+            right: "24px",
+            width: "54px",
+            height: "54px",
+            borderRadius: "50%",
+            border: "2px solid #39ff14",
+            zIndex: 999,
+            animation: "ping 1.5s ease-out infinite",
+            pointerEvents: "none",
+          }}
+        />
+      )}
+
       <button
         onClick={open ? () => setOpen(false) : handleOpen}
         style={{
@@ -127,16 +144,17 @@ const ChatBox = () => {
           height: "54px",
           borderRadius: "50%",
           background: "#1a1a2e",
-          border: "none",
+          border: "2px solid #39ff14",
           cursor: "pointer",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          boxShadow: "0 4px 20px rgba(0,0,0,0.22)",
-          transition: "transform 0.2s, background 0.2s",
+          transition: "transform 0.2s, box-shadow 0.2s",
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.background = "#3d5afe")}
-        onMouseLeave={(e) => (e.currentTarget.style.background = "#1a1a2e")}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.boxShadow = "0 0 16px rgba(57,255,20,0.5)")
+        }
+        onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
         title="Chat with Funda's AI"
       >
         {open ? (
@@ -145,7 +163,7 @@ const ChatBox = () => {
             height="20"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#fff"
+            stroke="#39ff14"
             strokeWidth="2.5"
             strokeLinecap="round"
           >
@@ -158,7 +176,7 @@ const ChatBox = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#fff"
+            stroke="#39ff14"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -414,6 +432,10 @@ const ChatBox = () => {
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(14px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes ping {
+          0% { transform: scale(1); opacity: 0.6; }
+          100% { transform: scale(1.6); opacity: 0; }
         }
       `}</style>
     </>

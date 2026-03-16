@@ -18,7 +18,7 @@ const Home = () => {
       <ChatBox />
       <AboutMe></AboutMe>
       <MySkills></MySkills>
-      <SkillsIcon></SkillsIcon>
+
       <Extra1></Extra1>
       <MyProjects></MyProjects>
       <Extra2></Extra2>
