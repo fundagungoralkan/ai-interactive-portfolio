@@ -205,7 +205,6 @@ const ChatBox = () => {
             animation: "fadeUp 0.2s ease",
           }}
         >
-          {/* Header */}
           <div
             style={{
               background: "#1a1a2e",
@@ -271,7 +270,6 @@ const ChatBox = () => {
             </button>
           </div>
 
-          {/* AI Badge */}
           <div
             style={{
               margin: "8px 14px 0",
